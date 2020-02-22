@@ -9,3 +9,5 @@ public class PlayerStats : ScriptableObject
     public float spd;
     public float rng;
 }
+
+

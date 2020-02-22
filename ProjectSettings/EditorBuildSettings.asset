@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SceneOscar.unity
+    guid: ea5bb0784b8a1774dbb1c71a9894749b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4984fdbbd87068c42a01cec76967741f,
       type: 2}

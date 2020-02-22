@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public GameObject prefab;
-    //public PlayerController control;
+    public Joystick joystick;
     public PlayerStats stats;
     public GameObject[] characters;
 
@@ -21,12 +19,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        //control = new PlayerController();
-        //control.Player.Fire.started += ctx => Tap();
+        
     }
-
-    //private void OnEnable() => control.Player.Enable();
-    //private void OnDisable() => control.Player.Disable();
 
     void Update()
     {
@@ -38,14 +32,11 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Tap()
+    void Touch()
     {
-        Debug.Log("Tap!");
-        Instantiate(prefab, transform);
-    }
-
-    public void Look()
-    {
-        Debug.Log("Look!");
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+        }
     }
 }

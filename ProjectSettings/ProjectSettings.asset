@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 2
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -263,7 +263,7 @@ PlayerSettings:
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
-  androidUseLowAccuracyLocation: 0
+  androidUseLowAccuracyLocation: 1
   androidUseCustomKeystore: 0
   m_AndroidBanners:
   - width: 320
@@ -773,5 +773,5 @@ PlayerSettings:
   organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 1
-  disableOldInputManagerSupport: 1
+  disableOldInputManagerSupport: 0
   legacyClampBlendShapeWeights: 0
