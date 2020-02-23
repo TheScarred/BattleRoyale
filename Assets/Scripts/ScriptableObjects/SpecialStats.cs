@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialStats : ScriptableObject
+public class Special : ScriptableObject
 {
+    Constants.AttackType type;
     
 }

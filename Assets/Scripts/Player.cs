@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public Joystick joystick;
     public PlayerStats stats;
+    public Special special1;
+    public Special special2;
     public Rigidbody rigi;
     public GameObject[] characters;
 
