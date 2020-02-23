@@ -9,3 +9,4 @@ public class CameraBehaviour : MonoBehaviour
     Vector3 dirOffset;
 
     private void LateUpdate() => transform.position = player.position + offset + dirOffset;
+}
