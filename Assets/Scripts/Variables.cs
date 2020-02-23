@@ -10,6 +10,14 @@
 
     public enum UpgradeCosts
     {
-        
+        MELEE = 50,
+        SPECIAL1 = 75,
+        SPECIAL2 = 100
+    }
+
+    public enum AttackType
+    {
+        AOE,
+        PROJECTILE
     }
 }
