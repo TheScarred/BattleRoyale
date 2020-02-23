@@ -36,7 +36,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Attack();
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            Attack();
+
+        }
         if (joystick.Direction != Vector2.zero)
             Move();
     }
@@ -45,6 +50,9 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+        //animacion ataque
+        animator.SetTrigger("AttackTrigger");
+
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider enemy in hitEnemies)
