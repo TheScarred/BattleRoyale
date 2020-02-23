@@ -14,11 +14,15 @@ public class Player : MonoBehaviour
 
     //animator y layer para los objetivos
     public Animator animator;
+    public Animation anim;
     public LayerMask enemyLayers;
     public float attackRange = 0.5f;
 
     [SerializeField]
     Transform attackPoint;
+    //Animaciones random ataque
+    public AnimationClip[] attackAnimation;
+    int numerorandom;
 
     void Start()
     {
@@ -30,6 +34,8 @@ public class Player : MonoBehaviour
         stats.atk = (float)Constants.BaseStats.ATK;
         stats.spd = (float)Constants.BaseStats.SPD;
         stats.rng = (float)Constants.BaseStats.RNG;
+
+        
     }
 
 
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             Attack();
+            
 
         }
         if (joystick.Direction != Vector2.zero)
@@ -51,7 +58,11 @@ public class Player : MonoBehaviour
     void Attack()
     {
         //animacion ataque
-        animator.SetTrigger("AttackTrigger");
+       numerorandom = Random.Range(0, 4);
+        Debug.Log(numerorandom);
+        //animator.SetTrigger("AttackTrigger");
+        animator.Play(attackAnimation[numerorandom].name);
+
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
