@@ -1606,6 +1606,7 @@ GameObject:
   - component: {fileID: 9568880}
   - component: {fileID: 8108597393629559747}
   - component: {fileID: 3763560696014649218}
+  - component: {fileID: 4677192914071834882}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1690,6 +1691,20 @@ MonoBehaviour:
   - {fileID: 177542}
   - {fileID: 162950}
   - {fileID: 138116}
+--- !u!136 &4677192914071834882
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &155650
 GameObject:
   m_ObjectHideFlags: 0
