@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class Room : MonoBehaviourPunCallbacks
+public class RoomMenu : MonoBehaviourPunCallbacks
 {
+    [SerializeField]
+    private Text roomName;
+
     public void CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
@@ -13,7 +17,7 @@ public class Room : MonoBehaviourPunCallbacks
 
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom("Basic", options, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(roomName.text, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()

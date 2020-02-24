@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8591df73d838bc343af00e0885f76723, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  gameVersion: 0.0.0
+  gameVersion: 0.0.1
   nickName: Scar
