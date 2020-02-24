@@ -21,8 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     Transform attackPoint;
     //Animaciones random ataque
-    public AnimationClip[] attackAnimation;
-    int numerorandom;
+    public AnimationClip[] attackAnimations;
 
     void Start()
     {
@@ -34,8 +33,7 @@ public class Player : MonoBehaviour
         stats.atk = (float)Constants.BaseStats.ATK;
         stats.spd = (float)Constants.BaseStats.SPD;
         stats.rng = (float)Constants.BaseStats.RNG;
-
-        
+        stats.rof = (float)Constants.BaseStats.ROF;
     }
 
 
@@ -44,11 +42,8 @@ public class Player : MonoBehaviour
     {
 
         if(Input.GetMouseButtonDown(1))
-        {
             Attack();
-            
 
-        }
         if (joystick.Direction != Vector2.zero)
             Move();
     }
@@ -58,10 +53,9 @@ public class Player : MonoBehaviour
     void Attack()
     {
         //animacion ataque
-       numerorandom = Random.Range(0, 4);
-        Debug.Log(numerorandom);
+        int randNum = Random.Range(0, 4);
         //animator.SetTrigger("AttackTrigger");
-        animator.Play(attackAnimation[numerorandom].name);
+        animator.Play(attackAnimations[randNum].name);
 
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
@@ -81,9 +75,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
-        {
             return;
-        }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
