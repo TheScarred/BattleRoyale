@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
 
     //animator y layer para los objetivos
     public Animator animator;
+    public Animation anim;
     public LayerMask enemyLayers;
     public float attackRange = 0.5f;
 
     [SerializeField]
     Transform attackPoint;
+    //Animaciones random ataque
+    public AnimationClip[] attackAnimations;
 
     void Start()
     {
@@ -30,13 +33,14 @@ public class Player : MonoBehaviour
         stats.atk = (float)Constants.BaseStats.ATK;
         stats.spd = (float)Constants.BaseStats.SPD;
         stats.rng = (float)Constants.BaseStats.RNG;
+        stats.rof = (float)Constants.BaseStats.ROF;
     }
-
-
 
     void Update()
     {
-        Attack();
+        if(Input.GetMouseButtonDown(1))
+            Attack();
+
         if (joystick.Direction != Vector2.zero)
             Move();
     }
@@ -45,13 +49,17 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+        //animacion ataque
+        int randNum = Random.Range(0, 4);
+        //animator.SetTrigger("AttackTrigger");
+        animator.Play(attackAnimations[randNum].name);
+
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log("Golpeado por espada" + enemy.name);
-        }
-
+        } 
 
     }
     void Move()
@@ -62,9 +70,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
-        {
             return;
-        }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
