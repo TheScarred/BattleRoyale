@@ -16,7 +16,7 @@ public class SingletonScriptableObject<T> : ScriptableObject where T : Scriptabl
 
                 if (results.Length == 0)
                 {
-                    Debug.LogError("SingletonScriptableObject -> Instance -> results length is 0 for type " + typeof(T).ToString() + ".");
+
                     return null;
                 }
                 if (results.Length > 1)

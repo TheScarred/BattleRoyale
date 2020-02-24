@@ -5,7 +5,8 @@
         HP = 100,
         ATK = 10,
         SPD = 5,
-        RNG = 2
+        RNG = 2,
+        ROF = 1
     }
 
     public enum UpgradeCosts
