@@ -36,11 +36,8 @@ public class Player : MonoBehaviour
         stats.rof = (float)Constants.BaseStats.ROF;
     }
 
-
-
     void Update()
     {
-
         if(Input.GetMouseButtonDown(1))
             Attack();
 
@@ -57,14 +54,12 @@ public class Player : MonoBehaviour
         //animator.SetTrigger("AttackTrigger");
         animator.Play(attackAnimations[randNum].name);
 
-
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log("Golpeado por espada" + enemy.name);
         }
-
 
     }
     void Move()
