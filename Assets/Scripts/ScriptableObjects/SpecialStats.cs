@@ -5,5 +5,4 @@ using UnityEngine;
 public class Special : ScriptableObject
 {
     public Constants.AttackType type;
-    
 }
