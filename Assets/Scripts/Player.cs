@@ -16,13 +16,20 @@ public class Player : MonoBehaviour
     public Animator animator;
     public Animation anim;
     public LayerMask enemyLayers;
+    public LayerMask playerLayers;
+
+
     public float attackRange = 0.5f;
 
     [SerializeField]
     Transform attackPoint;
     //Animaciones random ataque
     public AnimationClip[] attackAnimation;
-    int numerorandom;
+
+    //Ataque
+    public bool attack = false;
+
+    
 
     void Start()
     {
@@ -37,13 +44,17 @@ public class Player : MonoBehaviour
 
         
     }
-
+    public void CanAttack()
+    {
+        Debug.Log("hecho");
+        attack = true;
+    }
 
 
     void Update()
     {
 
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1)&&attack!=false)
         {
             Attack();
             
@@ -57,22 +68,41 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+        attack = false;
         //animacion ataque
-       numerorandom = Random.Range(0, 4);
+        int numerorandom = Random.Range(0, 3);
         Debug.Log(numerorandom);
         //animator.SetTrigger("AttackTrigger");
         animator.Play(attackAnimation[numerorandom].name);
 
+        //agarra a los players golpeados y los lista en un arreglo
+        Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
 
+        //agarra a los enemigos golpeados y los lista en un arreglo
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-
-        foreach (Collider enemy in hitEnemies)
+        if(hitEnemies.Length>0)
         {
-            Debug.Log("Golpeado por espada" + enemy.name);
+            foreach (Collider enemy in hitEnemies)
+            {
+                //funcion de hacer daño al enemigo
+
+            }
+
+        }
+
+      
+        if(hitPlayers.Length>0)
+        {
+            foreach (Collider player in hitPlayers)
+            {
+                //funcion de hacer daño al player
+            }
+
         }
 
 
     }
+    
     void Move()
     {
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
