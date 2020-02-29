@@ -13,12 +13,20 @@ public class PlayerController : MonoBehaviour
     //animator y layer para los objetivos
     public Animator animator;
     public LayerMask enemyLayers;
+    public LayerMask playerLayers;
+
+
     public float attackRange = 0.5f;
 
     [SerializeField]
     Transform attackPoint;
     //Animaciones random ataque
-    public AnimationClip[] attackAnimations;
+    public AnimationClip[] attackAnimation;
+
+    //Ataque
+    public bool attack = false;
+
+    
 
     void Start()
     {
@@ -31,10 +39,18 @@ public class PlayerController : MonoBehaviour
         stats.spd = (float)Constants.BasePlayerStats.SPD;
         stats.rng = (float)Constants.BasePlayerStats.RNG;
     }
+    public void CanAttack()
+    {
+        Debug.Log("hecho");
+        attack = true;
+    }
+
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+
+        if(Input.GetMouseButtonDown(1)&&attack!=false)
+        {
             Attack();
 
         if (joystick.Direction != Vector2.zero)
@@ -43,20 +59,40 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+        attack = false;
         //animacion ataque
-        int randNum = Random.Range(0, 4);
+        int numerorandom = Random.Range(0, 3);
+        Debug.Log(numerorandom);
         //animator.SetTrigger("AttackTrigger");
-        animator.Play(attackAnimations[randNum].name);
+        animator.Play(attackAnimation[numerorandom].name);
 
+        //agarra a los players golpeados y los lista en un arreglo
+        Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
+
+        //agarra a los enemigos golpeados y los lista en un arreglo
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-
-        foreach (Collider enemy in hitEnemies)
+        if(hitEnemies.Length>0)
         {
-            Debug.Log("Golpeado por espada" + enemy.name);
+            foreach (Collider enemy in hitEnemies)
+            {
+                //funcion de hacer daño al enemigo
+
+            }
+
+        }
+
+      
+        if(hitPlayers.Length>0)
+        {
+            foreach (Collider player in hitPlayers)
+            {
+                //funcion de hacer daño al player
+            }
+
         }
 
     }
-
+    
     void Move()
     {
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
