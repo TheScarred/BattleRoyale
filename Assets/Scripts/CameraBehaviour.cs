@@ -37,13 +37,14 @@ public class CameraBehaviour : MonoBehaviour
         if(Character.movimiento!=false)
         {
             tiempo = 2;
-            tiempo2 -= Time.deltaTime;
-            if(tiempo2 <=0)
+            
             movementCamera();
+            
         }
         else if(Character.movimiento!=true)
         {
             tiempo -= Time.deltaTime;
+            movementCamera();
             if (tiempo <= 0)
             {
                 CenterPlayer();
