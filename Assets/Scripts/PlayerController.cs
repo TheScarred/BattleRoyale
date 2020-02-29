@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Special special1, special2;
     public Rigidbody rigi;
     public GameObject[] characters;
+    public bool movimiento = false;
+
 
 
     //animator y layer para los objetivos
@@ -61,8 +63,10 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.Direction != Vector2.zero)
             Move();
-
-
+        else if(joystick.Direction == Vector2.zero)
+        {
+            movimiento = false;
+        }
     }
 
 
@@ -99,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        movimiento = true;
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
