@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
     Transform attackPoint;
 
     //Ataque
-    private bool attack = false;
+    private bool attack = true;
 
-    public bool CanAttack { get { return attack; } set { attack = value; } }
+    //public bool CanAttack { get { return attack; } set { attack = value; } }
 
-
+    public void CanAttack() => attack = true;
     void Start()
     {
         joystick = FindObjectOfType<Joystick>();
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(1) && CanAttack)
+        if (Input.GetMouseButtonDown(1) && attack)
         {
             Attack();
         }
@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+        
         attack = false;
         //animacion ataque
         int numerorandom = Random.Range(0, 3);
@@ -82,10 +83,12 @@ public class PlayerController : MonoBehaviour
             foreach (Collider enemy in hitEnemies)
             {
                 //funcion de hacer daño al enemigo
-
+                MakeDamageEnemy(enemy);
+                Debug.Log(enemy.GetComponent<Enemy>().stats.hp);
             }
 
         }
+        #region HitPLAYER
         if (hitPlayers.Length > 0)
         {
             foreach (Collider player in hitPlayers)
@@ -93,8 +96,23 @@ public class PlayerController : MonoBehaviour
                 //funcion de hacer daño al player
             }
         }
+        #endregion
+    }
+    #region FUNCION DAÑO ENEMY
+    public void MakeDamageEnemy(Collider enemy)
+    {
+        enemy.GetComponent<Enemy>().stats.hp -= 1;
+
+    }
+    #endregion
+    #region FUNCION DAÑO PLAYER
+
+    public void MakeDamagePlayer()
+    {
+
     }
 
+    #endregion
     void Move()
     {
         movimiento = true;
