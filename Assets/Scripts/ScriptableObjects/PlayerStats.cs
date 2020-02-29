@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerStats : ScriptableObject
 {
+    public int id;
     public float hp;
     public float atk;
     public float spd;
     public float rng;
-    public float rof;
+
 }
 
 

@@ -6,15 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public Joystick joystick;
     public PlayerStats stats;
-    public Special special1;
-    public Special special2;
+    public Special special1, special2;
     public Rigidbody rigi;
     public GameObject[] characters;
 
-
     //animator y layer para los objetivos
     public Animator animator;
-    public Animation anim;
     public LayerMask enemyLayers;
     public float attackRange = 0.5f;
 
@@ -29,11 +26,10 @@ public class PlayerController : MonoBehaviour
         rigi = GetComponent<Rigidbody>();
         stats = ScriptableObject.CreateInstance<PlayerStats>();
 
-        stats.hp = (float)Constants.BaseStats.HP;
-        stats.atk = (float)Constants.BaseStats.ATK;
-        stats.spd = (float)Constants.BaseStats.SPD;
-        stats.rng = (float)Constants.BaseStats.RNG;
-        stats.rof = (float)Constants.BaseStats.ROF;
+        stats.hp = (float)Constants.BasePlayerStats.HP;
+        stats.atk = (float)Constants.BasePlayerStats.ATK;
+        stats.spd = (float)Constants.BasePlayerStats.SPD;
+        stats.rng = (float)Constants.BasePlayerStats.RNG;
     }
 
     void Update()
@@ -44,8 +40,6 @@ public class PlayerController : MonoBehaviour
         if (joystick.Direction != Vector2.zero)
             Move();
     }
-
-
 
     void Attack()
     {
@@ -62,11 +56,13 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     void Move()
     {
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
+
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
