@@ -30,6 +30,11 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Joined Lobby!");
+    }
+
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log("Disconnected from server. Reason: " + cause.ToString());

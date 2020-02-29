@@ -10,6 +10,12 @@ public class RoomMenu : MonoBehaviourPunCallbacks
     [SerializeField]
     private Text roomName;
 
+    private RoomsCanvases roomsCanvases;
+    public void Init(RoomsCanvases canvases)
+    {
+        roomsCanvases = canvases;
+    }
+
     public void CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
@@ -23,6 +29,7 @@ public class RoomMenu : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully!");
+        roomsCanvases.CurrentRoom.Show();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

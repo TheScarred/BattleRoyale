@@ -1702,7 +1702,7 @@ MonoBehaviour:
     m_Bits: 0
   attackRange: 0.29
   attackPoint: {fileID: 772975212311928254}
-  attackAnimation: []
+  attackAnimations: []
 --- !u!136 &4677192914071834882
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3695,7 +3695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7199566644608154078
 Transform:
   m_ObjectHideFlags: 0

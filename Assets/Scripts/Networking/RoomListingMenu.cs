@@ -18,6 +18,8 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
     {
         foreach (RoomInfo info in roomList)
         {
+            Debug.Log("Bye");
+
             if (info.RemovedFromList)
             {
                 int index = listings.FindIndex(x => x.RoomInfo.Name == info.Name);
@@ -30,15 +32,13 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
             }
             else
             {
+                RoomListing listing = Instantiate(roomListing, content);
 
-            }
-
-            RoomListing listing = Instantiate(roomListing, content);
-
-            if (listing != null)
-            {
-                listing.SetRoomInfo(info);
-                listings.Add(listing);
+                if (listing != null)
+                {
+                    listing.SetRoomInfo(info);
+                    listings.Add(listing);
+                }
             }
 
         }
