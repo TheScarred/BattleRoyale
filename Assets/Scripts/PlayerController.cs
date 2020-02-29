@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public Joystick joystick;
+    public Button specialButton;
     public PlayerStats stats;
-    public Special special1;
-    public Special special2;
+    public Special special1, special2;
     public Rigidbody rigi;
     public GameObject[] characters;
     public bool movimiento = false;
@@ -36,13 +37,16 @@ public class PlayerController : MonoBehaviour
     {
         joystick = FindObjectOfType<Joystick>();
         rigi = GetComponent<Rigidbody>();
+
         stats = ScriptableObject.CreateInstance<PlayerStats>();
+        special1 = ScriptableObject.CreateInstance<Special>();
+        special2 = ScriptableObject.CreateInstance<Special>();
+
 
         stats.hp = (float)Constants.BasePlayerStats.HP;
         stats.atk = (float)Constants.BasePlayerStats.ATK;
         stats.spd = (float)Constants.BasePlayerStats.SPD;
         stats.rng = (float)Constants.BasePlayerStats.RNG;
-
 
     }
 
@@ -51,9 +55,7 @@ public class PlayerController : MonoBehaviour
     {
 
         if (Input.GetMouseButtonDown(1) && attack)
-        {
             Attack();
-        }
 
         if (joystick.Direction != Vector2.zero)
             Move();
@@ -119,12 +121,21 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
+
+    void Special1()
+    {
+
+    }
+
+    void Special2()
+    {
+
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
-        {
             return;
-        }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
