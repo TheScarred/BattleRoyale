@@ -16,7 +16,6 @@ public class CameraBehaviour : MonoBehaviour
     [SerializeField]
     PlayerController Character;
     float tiempo = 4.0f;
-    float tiempo2 = 2.0f;
     //
     IEnumerator ResetCam()
     {
