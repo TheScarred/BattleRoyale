@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private byte specialCount = 2;
+
     public Joystick joystick;
     public Button specialButton;
     public PlayerStats stats;
-    public Special special1, special2;
+    public Special[] specials;
     public Rigidbody rigi;
     public GameObject[] characters;
     public bool movimiento = false;
@@ -32,19 +34,20 @@ public class PlayerController : MonoBehaviour
 
     //public static bool Attack { get { return attack; } set { attack = value; } }
 
-    public void CanAttack()
-    {
-        attack = true;
-    }
+    public void CanAttack() => attack = true;
 
     void Start()
     {
         joystick = FindObjectOfType<Joystick>();
         rigi = GetComponent<Rigidbody>();
+        specials = new Special[specialCount];
 
         stats = ScriptableObject.CreateInstance<PlayerStats>();
-        special1 = ScriptableObject.CreateInstance<Special>();
-        special2 = ScriptableObject.CreateInstance<Special>();
+        
+        for (byte i = 0; i < specialCount; i++)
+        {
+            specials[i] = ScriptableObject.CreateInstance<Special>();
+        }
 
 
         stats.hp = (float)Constants.BasePlayerStats.HP;
