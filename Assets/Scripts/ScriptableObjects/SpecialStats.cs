@@ -5,6 +5,7 @@ using UnityEngine;
 public class Special : ScriptableObject
 {
     public int id;
+    public float cooldown;
     public string specialName;
     public Constants.AttackType type;
 

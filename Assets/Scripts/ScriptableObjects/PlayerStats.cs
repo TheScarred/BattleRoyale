@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject
 {
     public int id;
+    public int gold;
     public float hp;
     public float atk;
     public float spd;

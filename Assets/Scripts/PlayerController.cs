@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             specials[i] = ScriptableObject.CreateInstance<Special>();
             specials[i].id = i;
+            specials[i].cooldown = (i * 10) + 5;
             specials[i].specialName = " Special " + (i + 1).ToString();
         }
 
@@ -54,7 +55,6 @@ public class PlayerController : MonoBehaviour
         stats.atk = (float)Constants.BasePlayerStats.ATK;
         stats.spd = (float)Constants.BasePlayerStats.SPD;
         stats.rng = (float)Constants.BasePlayerStats.RNG;
-
     }
 
 
@@ -130,8 +130,8 @@ public class PlayerController : MonoBehaviour
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
 
-    public void UseSpecial(int i) => specials[i].Use();
-    public void UpgradeSpecial(int i) => specials[i].Upgrade();
+    public void UseSpecial(byte i) => specials[i].Use();
+    public void UpgradeSpecial(byte i) => specials[i].Upgrade();
 
     private void OnDrawGizmosSelected()
     {
