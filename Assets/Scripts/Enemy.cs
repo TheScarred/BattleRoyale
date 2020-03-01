@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        
+        if(stats.hp<=0)
+        {
+            Debug.Log("Muerte");
+        }
     }
 }

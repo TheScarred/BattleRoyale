@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     #region FUNCION DAÑO ENEMY
     public void MakeDamageEnemy(Collider enemy)
     {
-        enemy.GetComponent<Enemy>().stats.hp -= 1;
+        enemy.GetComponent<Enemy>().stats.hp -= 30;
 
     }
     #endregion
@@ -120,16 +120,6 @@ public class PlayerController : MonoBehaviour
         movimiento = true;
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
-    }
-
-    void Special1()
-    {
-
-    }
-
-    void Special2()
-    {
-
     }
 
     private void OnDrawGizmosSelected()
