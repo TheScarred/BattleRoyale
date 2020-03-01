@@ -9,11 +9,6 @@ public class PlayerStats : ScriptableObject
     public float atk;
     public float spd;
     public float rng;
-
-    public void Use()
-    {
-
-    }
 }
 
 

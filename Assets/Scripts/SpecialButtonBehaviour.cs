@@ -1,11 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpecialButtonBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private byte specialId = 0;
+    public Swipe swipeControls;
+    public Button specialButton;
 
-    private byte SpecialID { get { return specialId; } set { specialId = value; } }
+    [SerializeField]
+    private byte currentSpecial = 0;
+
+    private byte CurrentSpecial { get { return currentSpecial; } set { currentSpecial = value; } }
+
+    private void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        if (swipeControls.SwipeLeft)
+            Debug.Log("Swipe Left");
+    }
+
+    public void BeginDrag()
+    {
+        Debug.Log("Begin Drag");
+    }
+
+
+
 }

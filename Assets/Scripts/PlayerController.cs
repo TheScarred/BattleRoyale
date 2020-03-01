@@ -46,8 +46,9 @@ public class PlayerController : MonoBehaviour
         for (byte i = 0; i < specialCount; i++)
         {
             specials[i] = ScriptableObject.CreateInstance<Special>();
+            specials[i].id = i;
+            specials[i].specialName = " Special " + (i + 1).ToString();
         }
-
 
         stats.hp = (float)Constants.BasePlayerStats.HP;
         stats.atk = (float)Constants.BasePlayerStats.ATK;
@@ -65,10 +66,9 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.Direction != Vector2.zero)
             Move();
-        else if(joystick.Direction == Vector2.zero)
-        {
+
+        else if (joystick.Direction == Vector2.zero)
             movimiento = false;
-        }
     }
 
 
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         attack = false;
         //animacion ataque
         int numerorandom = Random.Range(0, 3);
-        animator.Play(animKit.attackAnim[numerorandom].name);
+        animator.Play(animKit.attack[numerorandom].name);
 
         //agarra a los players golpeados y los lista en un arreglo
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
     }
+
     #region FUNCION DAÑO ENEMY
     public void MakeDamageEnemy(Collider enemy)
     {
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
     void Move()
     {
         movimiento = true;
@@ -128,15 +130,8 @@ public class PlayerController : MonoBehaviour
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
 
-    void Special1()
-    {
-
-    }
-
-    void Special2()
-    {
-
-    }
+    public void UseSpecial(int i) => specials[i].Use();
+    public void UpgradeSpecial(int i) => specials[i].Upgrade();
 
     private void OnDrawGizmosSelected()
     {
