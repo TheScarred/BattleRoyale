@@ -5,12 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private byte specialCount = 2;
+
     public Joystick joystick;
     public Button specialButton;
     public PlayerStats stats;
-    public Special special1, special2;
+    public Special[] specials;
     public Rigidbody rigi;
     public GameObject[] characters;
+    public bool movimiento = false;
+
 
 
     //animator y layer para los objetivos
@@ -26,23 +30,23 @@ public class PlayerController : MonoBehaviour
     Transform attackPoint;
 
     //Ataque
-    private static bool attack = true;
+    private bool attack = true;
 
     //public static bool Attack { get { return attack; } set { attack = value; } }
 
-    public void CanAttack()
-    {
-        attack = true;
-    }
-
+    public void CanAttack() => attack = true;
     void Start()
     {
         joystick = FindObjectOfType<Joystick>();
         rigi = GetComponent<Rigidbody>();
+        specials = new Special[specialCount];
 
         stats = ScriptableObject.CreateInstance<PlayerStats>();
-        special1 = ScriptableObject.CreateInstance<Special>();
-        special2 = ScriptableObject.CreateInstance<Special>();
+        
+        for (byte i = 0; i < specialCount; i++)
+        {
+            specials[i] = ScriptableObject.CreateInstance<Special>();
+        }
 
 
         stats.hp = (float)Constants.BasePlayerStats.HP;
@@ -61,14 +65,17 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.Direction != Vector2.zero)
             Move();
-
-
+        else if(joystick.Direction == Vector2.zero)
+        {
+            movimiento = false;
+        }
     }
 
 
 
     void Attack()
     {
+        
         attack = false;
         //animacion ataque
         int numerorandom = Random.Range(0, 3);
@@ -84,10 +91,12 @@ public class PlayerController : MonoBehaviour
             foreach (Collider enemy in hitEnemies)
             {
                 //funcion de hacer daño al enemigo
-
+                MakeDamageEnemy(enemy);
+                Debug.Log(enemy.GetComponent<Enemy>().stats.hp);
             }
 
         }
+        #region HitPLAYER
         if (hitPlayers.Length > 0)
         {
             foreach (Collider player in hitPlayers)
@@ -95,10 +104,26 @@ public class PlayerController : MonoBehaviour
                 //funcion de hacer daño al player
             }
         }
+        #endregion
+    }
+    #region FUNCION DAÑO ENEMY
+    public void MakeDamageEnemy(Collider enemy)
+    {
+        enemy.GetComponent<Enemy>().stats.hp -= 1;
+
+    }
+    #endregion
+    #region FUNCION DAÑO PLAYER
+
+    public void MakeDamagePlayer()
+    {
+
     }
 
+    #endregion
     void Move()
     {
+        movimiento = true;
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
