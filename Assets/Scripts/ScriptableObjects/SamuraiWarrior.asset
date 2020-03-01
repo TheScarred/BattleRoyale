@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea59bad4b573fb4fb8442f545a4a766, type: 3}
   m_Name: SamuraiWarrior
   m_EditorClassIdentifier: 
-  attackAnim:
+  attack:
   - {fileID: 7400000, guid: 7b5b17e2d42e0424f9c36012595dc9b6, type: 3}
   - {fileID: 7400000, guid: 018ce46eeecfeae4abb8016f2c6841ca, type: 3}
   - {fileID: 7400000, guid: cdd2643e8053d5b419629acf98510a71, type: 3}
   - {fileID: 7400000, guid: 04cb27dc01c081446ba2c02f2761f01d, type: 3}
+  special1: {fileID: 0}
+  special2: {fileID: 0}
+  death: {fileID: 0}

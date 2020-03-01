@@ -14,7 +14,6 @@ public class LongClickButton : MonoBehaviour,IPointerDownHandler, IPointerUpHand
 
     public UnityEvent onLongClick;
 
-
     public void OnPointerDown(PointerEventData eventData)
     {
         pointerDown = true;
