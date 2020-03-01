@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private byte specialCount = 2;
+
     public Joystick joystick;
     public Button specialButton;
     public PlayerStats stats;
-    public Special special1, special2;
+    public Special[] specials;
     public Rigidbody rigi;
     public GameObject[] characters;
     public bool movimiento = false;
@@ -30,18 +32,23 @@ public class PlayerController : MonoBehaviour
     //Ataque
     private bool attack = true;
 
-    //public bool CanAttack { get { return attack; } set { attack = value; } }
+    //public static bool Attack { get { return attack; } set { attack = value; } }
 
     public void CanAttack() => attack = true;
     void Start()
     {
         joystick = FindObjectOfType<Joystick>();
         rigi = GetComponent<Rigidbody>();
+        specials = new Special[specialCount];
 
         stats = ScriptableObject.CreateInstance<PlayerStats>();
-        special1 = ScriptableObject.CreateInstance<Special>();
-        special2 = ScriptableObject.CreateInstance<Special>();
-
+        
+        for (byte i = 0; i < specialCount; i++)
+        {
+            specials[i] = ScriptableObject.CreateInstance<Special>();
+            specials[i].id = i;
+            specials[i].specialName = " Special " + (i + 1).ToString();
+        }
 
         stats.hp = (float)Constants.BasePlayerStats.HP;
         stats.atk = (float)Constants.BasePlayerStats.ATK;
@@ -59,10 +66,9 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.Direction != Vector2.zero)
             Move();
-        else if(joystick.Direction == Vector2.zero)
-        {
+
+        else if (joystick.Direction == Vector2.zero)
             movimiento = false;
-        }
     }
 
 
@@ -73,7 +79,7 @@ public class PlayerController : MonoBehaviour
         attack = false;
         //animacion ataque
         int numerorandom = Random.Range(0, 3);
-        animator.Play(animKit.attackAnim[numerorandom].name);
+        animator.Play(animKit.attack[numerorandom].name);
 
         //agarra a los players golpeados y los lista en un arreglo
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
@@ -100,6 +106,7 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
     }
+
     #region FUNCION DAÑO ENEMY
     public void MakeDamageEnemy(Collider enemy)
     {
@@ -115,12 +122,16 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
     void Move()
     {
         movimiento = true;
         transform.eulerAngles = new Vector3(0, Mathf.Atan2(joystick.Vertical, -joystick.Horizontal) * 180 / Mathf.PI, 0);
         rigi.MovePosition(transform.position + (new Vector3(joystick.Vertical, 0, -joystick.Horizontal) * Time.fixedDeltaTime * stats.spd));
     }
+
+    public void UseSpecial(int i) => specials[i].Use();
+    public void UpgradeSpecial(int i) => specials[i].Upgrade();
 
     private void OnDrawGizmosSelected()
     {

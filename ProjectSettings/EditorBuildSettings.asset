@@ -8,6 +8,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PhotonRooms.unity
     guid: a1042ea8a50275f44a1042b5e0ceb8ae
+  - enabled: 1
+    path: Assets/Scenes/Main menu.unity
+    guid: a430ccc62b9606c409a6cea207356f05
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 177d83e6264ae68438acb57f04eb0f8e
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: d65cc3833e8e0484596c481de37dd996
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: d99c557900de31445a516df39339ca0c
+  - enabled: 1
+    path: Assets/Scenes/Customize.unity
+    guid: a6a587e7fa9e8ed46b0890b6a544cfde
+  - enabled: 1
+    path: Assets/Scenes/Character Select.unity
+    guid: ea8411dace0584c4eb895e2fde384893
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4984fdbbd87068c42a01cec76967741f,
       type: 2}

@@ -14,7 +14,6 @@ public class LongClickButton : MonoBehaviour,IPointerDownHandler, IPointerUpHand
 
     public UnityEvent onLongClick;
 
-
     public void OnPointerDown(PointerEventData eventData)
     {
         pointerDown = true;
@@ -34,9 +33,8 @@ public class LongClickButton : MonoBehaviour,IPointerDownHandler, IPointerUpHand
             if (pointerDownTimer > requiredHoldTime)
             {
                 if (onLongClick != null)
-                {
                     onLongClick.Invoke();
-                }
+
                 Reset();
             }
         }
