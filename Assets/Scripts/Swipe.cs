@@ -7,10 +7,21 @@ public class Swipe : MonoBehaviour
     private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private Vector2 startTouch, swipeDelta;
     private bool isDragging = false;
+    private float swipeAmount;
+
+    [Range(0,1)]
+    public float pixelSwipePercentage;
+
+    private void Start()
+    {
+        swipeAmount = pixelSwipePercentage * Screen.width;
+        Debug.Log(swipeAmount);
+    }
 
     void Update()
     {
         tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
+
         #region Standalone Inputs
         if (Input.GetMouseButtonDown(0))
         {
@@ -55,7 +66,7 @@ public class Swipe : MonoBehaviour
             }
         }
         //Did we cross the deadzone?
-        if (swipeDelta.magnitude > 125)
+        if (swipeDelta.magnitude > swipeAmount)
         {
             //Which direction?
             float x = swipeDelta.x;
