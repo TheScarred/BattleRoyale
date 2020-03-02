@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     #region FUNCION DAÑO ENEMY
     public void MakeDamageEnemy(Collider enemy)
     {
-        enemy.GetComponent<Enemy>().stats.hp -= 1;
+        enemy.GetComponent<Enemy>().stats.hp -= 30;
 
     }
     #endregion
