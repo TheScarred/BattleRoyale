@@ -18,4 +18,4 @@ MonoBehaviour:
   type: 1
   projectile: {fileID: 8109221418325556501, guid: f859963e276c2824bab716a229c2efda,
     type: 3}
-  speed: 500
+  speed: 2000
