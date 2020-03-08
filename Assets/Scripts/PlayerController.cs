@@ -45,10 +45,10 @@ public class PlayerController : MonoBehaviour
         
         for (byte i = 0; i < specialCount; i++)
         {
-            specials[i] = ScriptableObject.CreateInstance<Special>();
-            specials[i].id = i;
-            specials[i].cooldown = (i * 10) + 5;
-            specials[i].specialName = " Special " + (i + 1).ToString();
+            //specials[i] = ScriptableObject.CreateInstance<Special>();
+            //specials[i].id = i;
+            //specials[i].cooldown = (i * 10) + 5;
+            //specials[i].specialName = " Special " + (i + 1).ToString();
         }
 
         stats.hp = (float)Constants.BasePlayerStats.HP;
