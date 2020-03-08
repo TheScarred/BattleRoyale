@@ -83,18 +83,7 @@ public class Swipe : MonoBehaviour
                     swipeRight = true;
                 }
             }
-            else
-            {
-                //Up or down
-                if (x < 0)
-                {
-                    swipeLeft = true;
-                }
-                else
-                {
-                    swipeRight = true;
-                }
-            }
+           
             Reset();
         }
     }
