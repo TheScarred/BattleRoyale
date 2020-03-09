@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileSkillManager : MonoBehaviour
 {
     public ProjectileSkill swordBeam;
-    public AoESkill Stun;
     void Update()
     {
         if (Input.GetKeyDown("a"))
@@ -16,9 +15,5 @@ public class ProjectileSkillManager : MonoBehaviour
     public void FireSwordBeam()
     {
         this.swordBeam.Fire(this.gameObject);
-    }
-    public void SpawnAoE()
-    {
-        this.Stun.AOEStun(this.gameObject);
     }
 }
