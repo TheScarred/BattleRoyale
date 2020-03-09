@@ -22,4 +22,8 @@ public class Special : ScriptableObject
     {
         
     }
+    public virtual void AOEStun(GameObject player)
+    {
+
+    }
 }
