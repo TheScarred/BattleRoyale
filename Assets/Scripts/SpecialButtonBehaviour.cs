@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class SpecialButtonBehaviour : MonoBehaviour
 {
+    public Transform upgradeButton;
     public PlayerController player;
     public Swipe swipeControls;
+    private LineRenderer line;
     public Button specialButton;
     Text buttonText;
     Image cooldown;
 
     private float[] cooldowns;
+
+    private bool dragging;
 
     [SerializeField]
     private byte currentSpecial = 0;
@@ -19,6 +23,9 @@ public class SpecialButtonBehaviour : MonoBehaviour
 
     private void Start()
     {
+        line = GetComponent<LineRenderer>();
+        line.enabled = false;
+        line.SetPosition(0, transform.position);
         buttonText = specialButton.GetComponentInChildren<Text>();
         cooldown = buttonText.GetComponentInChildren<Image>();
         cooldown.fillAmount = 0;
@@ -28,12 +35,16 @@ public class SpecialButtonBehaviour : MonoBehaviour
     void Update()
     {
         ButtonGesture();
-
         StartCoroutine(UpdateCooldowns());
+
+        if (dragging)
+            StartCoroutine(UpdateLine());
     }
 
     public void BeginDrag()
     {
+        upgradeButton.gameObject.SetActive(true);
+        dragging = true;
         Debug.Log("Begin Drag");
     }
 
@@ -64,6 +75,11 @@ public class SpecialButtonBehaviour : MonoBehaviour
 
             UpdateButton();
         }
+    }
+
+    public void DragCheck()
+    {
+        
     }
 
     public void UpdateButton()
@@ -97,6 +113,12 @@ public class SpecialButtonBehaviour : MonoBehaviour
                 }
             }
 
+        yield return null;
+    }
+
+    public IEnumerator UpdateLine()
+    {
+        
         yield return null;
     }
 
