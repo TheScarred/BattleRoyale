@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea59bad4b573fb4fb8442f545a4a766, type: 3}
+  m_Name: EnemyKit
+  m_EditorClassIdentifier: 
+  attack:
+  - {fileID: 1827226128182048838, guid: d559e75d7a571734c95fdc2115dfa5b3, type: 3}
+  - {fileID: 1827226128182048838, guid: 6271190fcd783ad4a8a3b3c879867a42, type: 3}
+  death:
+  - {fileID: 7400014, guid: d55a3dafe23105e409ee70d6605cbd49, type: 3}
+  - {fileID: 7400036, guid: d55a3dafe23105e409ee70d6605cbd49, type: 3}
+  - {fileID: 1827226128182048838, guid: 759976764245f984aa3fd8a4d16c1da7, type: 3}
+  special1: {fileID: 0}
+  special2: {fileID: 0}

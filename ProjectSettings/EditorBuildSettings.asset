@@ -6,8 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SceneOscar.unity
-    guid: ea5bb0784b8a1774dbb1c71a9894749b
+    path: Assets/Scenes/PhotonRooms.unity
+    guid: a1042ea8a50275f44a1042b5e0ceb8ae
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 177d83e6264ae68438acb57f04eb0f8e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4984fdbbd87068c42a01cec76967741f,
       type: 2}

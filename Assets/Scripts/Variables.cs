@@ -1,11 +1,19 @@
 ﻿namespace Constants
 {
-    public enum BaseStats
+    public enum BasePlayerStats
     {
         HP = 100,
         ATK = 10,
         SPD = 5,
-        RNG = 2
+        RNG = 2,
+        ROF = 1
+    }
+
+    public enum BaseEnemyStats
+    {
+        HP = 30,
+        ATK = 5,
+        SPD = 1,
     }
 
     public enum UpgradeCosts
