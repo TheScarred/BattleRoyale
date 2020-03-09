@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 200875615}
   - component: {fileID: 200875614}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: RoomMenuInpu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 280059006}
   - component: {fileID: 280059007}
   m_Layer: 5
-  m_Name: CreateRoom
+  m_Name: CreateRoomMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,10 +466,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 280059005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1331d295def1064faede5213d5f63c4, type: 3}
+  m_Script: {fileID: 11500000, guid: aa5a2aab2388c8647a4064db03e85ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: {fileID: 1755537468}
+  roomName: {fileID: 762880065}
 --- !u!1 &319876014
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,12 +906,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 495917513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a57bca68705dc43aef70b06eb3b4a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f3f5cc5b699354c4faf5b7cd88112564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerListing: {fileID: 3530631659427583384, guid: 0e44bdd1558972b4eae0058c47025e0b,
-    type: 3}
-  content: {fileID: 1642851214}
+  text: {fileID: 0}
 --- !u!1 &662520919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165257481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2206052eee2800d4aada7769b0b007be, type: 3}
+  m_Script: {fileID: 11500000, guid: 981bf75b03c533742a3d60d32f540f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   createOrJoinRoom: {fileID: 1297831890}
@@ -1687,12 +1685,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1220279208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96db591cafa8a394da1587c9f478a6d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 00689cacb53256e4c9182a3341289c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomListing: {fileID: 7580306249598559628, guid: 7bf32c9019dbcef47ab12036abb5b396,
-    type: 3}
-  content: {fileID: 2134262775}
+  text: {fileID: 0}
 --- !u!1 &1297831885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,7 +1800,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1297831885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ab9eee1c6d27c9419b684108ee62a0b, type: 3}
+  m_Script: {fileID: 11500000, guid: c6f607b61a8977746879df7cef7721d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roomMenu: {fileID: 280059007}
@@ -2590,7 +2586,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1996501732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4300f4b06d3b6a34b8a292f135a03c05, type: 3}
+  m_Script: {fileID: 11500000, guid: 725a3e36bfc7ce043b5fbc681bf73a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2088463861
@@ -2719,7 +2715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00077639543}
+  m_AnchoredPosition: {x: 0, y: 0.000024966124}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2134262776
